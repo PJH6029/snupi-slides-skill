@@ -1,6 +1,0 @@
-interface:
-  display_name: "SNUPI Research Slides (KO)"
-  short_description: "한국어 SNUPI Lab 연구 발표 슬라이드 워크플로우"
-  default_prompt: "$snupi-presentation-slides-ko 를 사용해서 내 브리프나 논문 URL을 outline, draft HTML 슬라이드, slides-grab editor 세션으로 이어줘."
-policy:
-  allow_implicit_invocation: true

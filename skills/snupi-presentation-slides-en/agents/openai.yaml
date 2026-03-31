@@ -1,6 +1,6 @@
 interface:
   display_name: "SNUPI Research Slides (EN)"
   short_description: "English SNUPI Lab research slides workflow"
-  default_prompt: "Use $snupi-presentation-slides-en to turn my brief or paper URLs into an approved outline, draft HTML slides, and the slides-grab editor session."
+  default_prompt: "Use $snupi-presentation-slides-en ... TODO"
 policy:
   allow_implicit_invocation: true
