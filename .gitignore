@@ -7,3 +7,5 @@ decks/
 skills-lock.json
 package-lock.json
 package.json
+!skills/snupi-presentation-slides-en/package.json
+!skills/snupi-presentation-slides-en/package-lock.json

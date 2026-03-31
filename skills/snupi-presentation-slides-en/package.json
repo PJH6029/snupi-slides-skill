@@ -1,0 +1,19 @@
+{
+  "name": "snupi-presentation-slides-en",
+  "private": true,
+  "type": "commonjs",
+  "description": "SNUPI Lab presentation slide generator skill assets and scripts",
+  "scripts": {
+    "build:example": "node scripts/build_deck.js --spec examples/literature-review.deck-spec.json --dir ../../decks/snupi-example",
+    "render:example": "python3 scripts/render_slides.py ../../decks/snupi-example/deck.pptx --output_dir ../../decks/snupi-example/rendered",
+    "check:example": "python3 scripts/slides_test.py ../../decks/snupi-example/deck.pptx"
+  },
+  "dependencies": {
+    "fontkit": "^2.0.4",
+    "linebreak": "^1.1.0",
+    "mathjax-full": "^3.2.2",
+    "pptxgenjs": "^3.12.0",
+    "prismjs": "^1.29.0",
+    "skia-canvas": "^3.0.6"
+  }
+}

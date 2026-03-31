@@ -1,0 +1,136 @@
+{
+  "metadata": {
+    "title": "Multimodal Agent Systems for Scientific Paper Review",
+    "subtitle": "SNUPI Lab literature review draft",
+    "presenter": "SNUPI Lab Member",
+    "date": "2026-04-07",
+    "presentation_type": "literature-review",
+    "audience": "SNUPI weekly meeting",
+    "duration_minutes": 16,
+    "target_slides": 6,
+    "language": "en"
+  },
+  "sources": [
+    {
+      "id": "paper_1",
+      "title": "Example survey on paper-ingestion agents",
+      "citation": "Example Survey, 2026",
+      "url": "https://arxiv.org/abs/2406.01234"
+    }
+  ],
+  "defaults": {
+    "footer_label": "SNUPI Lab"
+  },
+  "slides": [
+    {
+      "layout": "title",
+      "title": "Multimodal Agent Systems for Scientific Paper Review",
+      "subtitle": "SNUPI Lab literature review draft",
+      "bullets": [],
+      "speaker_notes": [
+        "Open with the problem: researchers want slide drafts from notes, URLs, or PDFs without hand-formatting every slide."
+      ],
+      "assets": [],
+      "citations": []
+    },
+    {
+      "layout": "tldr",
+      "title": "TL;DR",
+      "bullets": [
+        "Normalize every request into a deck spec before generating slides.",
+        "Prefer one dominant figure or equation per analytical slide.",
+        "Use lightweight extraction first and insert explicit placeholders when confidence is low."
+      ],
+      "speaker_notes": [
+        "This is the operating policy for the skill rather than a claim about any one external project."
+      ],
+      "assets": [],
+      "citations": [
+        "paper_1"
+      ]
+    },
+    {
+      "layout": "bullets",
+      "title": "Why A Two-Step Pipeline Works",
+      "bullets": [
+        "Input collection and slide rendering fail for different reasons, so they should be separated.",
+        "A normalized slide spec gives the model a stable target and keeps rendering deterministic.",
+        "The renderer can enforce lab rules like title size, footer formatting, and one-visual slides."
+      ],
+      "speaker_notes": [
+        "Emphasize that the spec is the contract between planning and layout."
+      ],
+      "assets": [],
+      "citations": [
+        "paper_1"
+      ]
+    },
+    {
+      "layout": "figure_focus",
+      "title": "Reference Architecture For The Skill",
+      "bullets": [
+        "Paper ingestion and slide rendering stay loosely coupled.",
+        "The final PPTX remains editable because the layout stage is deterministic."
+      ],
+      "speaker_notes": [
+        "Walk left-to-right through the pipeline."
+      ],
+      "assets": [
+        {
+          "kind": "image",
+          "path": "examples/example_figure.svg",
+          "caption": "Example pipeline diagram for a paper-to-slides workflow.",
+          "source_id": "paper_1",
+          "citation": "Example Survey, 2026",
+          "fit": "contain"
+        }
+      ],
+      "citations": [
+        "paper_1"
+      ]
+    },
+    {
+      "layout": "equation_focus",
+      "title": "Use A Cost-Aware Drafting Objective",
+      "bullets": [
+        "Higher extraction confidence should reduce the number of placeholders.",
+        "Longer decks should be penalized when they add low-value detail."
+      ],
+      "speaker_notes": [
+        "This slide is illustrative, not quoted from a paper."
+      ],
+      "assets": [
+        {
+          "kind": "equation",
+          "latex": "J = \\sum_{s \\in slides} \\left(utility(s) - \\lambda \\cdot density(s)\\right) - \\mu \\cdot placeholders",
+          "caption": "Illustrative objective for balancing utility, density, and placeholder count.",
+          "citation": "SNUPI skill draft"
+        }
+      ],
+      "citations": []
+    },
+    {
+      "layout": "closing",
+      "title": "Takeaways And Open Questions",
+      "bullets": [
+        "Default to autonomous draft generation once the essentials are known.",
+        "Keep the parser optional so normal lab machines can still use the skill.",
+        "Future work: stronger table extraction and automatic source-to-slide citation placement."
+      ],
+      "speaker_notes": [
+        "End by connecting the implementation back to weekly lab workflows."
+      ],
+      "assets": [
+        {
+          "kind": "placeholder",
+          "placeholder": "Insert one representative extracted table from a public paper once parser evaluation is complete.",
+          "caption": "Placeholder for a future parser comparison result.",
+          "citation": "Example Survey, 2026"
+        }
+      ],
+      "citations": [
+        "paper_1"
+      ]
+    }
+  ]
+}
