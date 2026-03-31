@@ -1,6 +1,6 @@
 # SNUPI 스타일 가이드 (KO)
 
-설치된 `slides-grab` 디자인 워크플로우 위에 이 규칙을 덧씌웁니다.
+설치된 `slides-grab` 디자인 워크플로우 위에 이 규칙을 덧씌우되, `assets/template-html/`에 번들된 HTML 템플릿을 canonical visual source로 사용합니다.
 
 ## 프레임과 타이포
 - 기본 프레임은 `slides-grab`의 `720pt x 405pt` (16:9)를 유지합니다.
@@ -8,6 +8,12 @@
 - 제목은 보통 `35pt` 이상을 유지합니다.
 - 본문은 보통 `25pt` 이상을 유지합니다.
 - 이 크기에서 답이 안 나오면 글자를 줄이지 말고 내용을 줄이세요.
+
+## 템플릿 fidelity 규칙
+- 새로운 레이아웃을 만들기 전에 번들된 HTML 템플릿에서 시작하세요.
+- 사용자가 명시적으로 바꾸라고 하지 않는 한 파란 상하단 bar, footer logo/date/page 리듬, serif 중심 제목 처리를 유지하세요.
+- title, list, figure, equation, meeting-log 슬라이드는 템플릿의 slide archetype을 재사용하세요.
+- 레포의 PPTX/PDF는 레거시 visual reference일 뿐이며 1차 기준은 아닙니다.
 
 ## SNUPI 발표 규칙
 - 가능하면 슬라이드당 하나의 큰 figure, table, equation만 둡니다.

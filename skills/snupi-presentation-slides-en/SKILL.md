@@ -1,6 +1,6 @@
 ---
 name: snupi-presentation-slides-en
-description: Research-aware slides-grab wrapper for English SNUPI Lab presentation decks. Use when the user wants academic slides from a Markdown brief, paper URLs or PDFs, or an interview, then needs outline approval, HTML slide generation, validation, viewer build, and editor launch.
+description: Research-aware slides-grab wrapper for English SNUPI Lab presentation decks. Use when the user wants academic slides from a Markdown brief, paper URLs or PDFs, or an interview, then needs outline approval, HTML slide generation, validation, viewer build, and editor launch while following the bundled SNUPI HTML template.
 metadata:
   short-description: English SNUPI Lab research slides workflow
 ---
@@ -29,6 +29,16 @@ Before doing content work:
 2. If the CLI is missing, follow `references/slides-grab-setup.md`.
 3. If the Codex `slides-grab` skills are missing, tell the user to install them and restart Codex.
 4. After setup succeeds, explicitly invoke the installed `$slides-grab` skill and use it as the backend baseline for plan, design, validation, viewer build, and editor launch.
+
+## Template source of truth
+The bundled HTML template under `assets/template-html/` is the primary visual source of truth for this skill.
+
+Before drafting slides:
+1. Read `assets/template-html/index.html`.
+2. Read `assets/template-html/styles.css`.
+3. Use `references/template-html-workflow.md` to map the template deck into `slides-grab` slide files.
+
+Use the legacy PPTX or PDF only when the HTML template is ambiguous.
 
 ## Intake priority
 Use the first available source of truth in this order:
@@ -61,19 +71,22 @@ Keep later revisions in the same workspace instead of scattering notes elsewhere
 7. After approval, use the installed `slides-grab` workflow to generate `slide-XX.html`.
 8. Apply `references/snupi-style-guide.md` while designing:
    - keep the native 16:9 `slides-grab` frame,
+   - reproduce the bundled HTML template's footer, bars, title treatment, and layout grammar,
    - prefer one dominant visual anchor per slide,
    - keep text sparse and presentation-first.
-9. For paper-driven decks, prefer real figures or tables stored in `./assets/`. If extraction is weak or unsafe, use `data-image-placeholder` and a caption naming the source paper plus the missing asset.
-10. Run `slides-grab validate --slides-dir <path>`.
-11. Fix HTML/CSS until validation passes.
-12. Run `slides-grab build-viewer --slides-dir <path>`.
-13. Report the viewer path.
-14. Run `slides-grab edit --slides-dir <path>` after the draft deck is ready.
+9. Base each generated slide on the closest bundled HTML master pattern from `assets/template-html/index.html`. Do not invent a new visual language unless the user explicitly asks to diverge from the lab template.
+10. For paper-driven decks, prefer real figures or tables stored in `./assets/`. If extraction is weak or unsafe, use `data-image-placeholder` and a caption naming the source paper plus the missing asset.
+11. Run `slides-grab validate --slides-dir <path>`.
+12. Fix HTML/CSS until validation passes.
+13. Run `slides-grab build-viewer --slides-dir <path>`.
+14. Report the viewer path.
+15. Run `slides-grab edit --slides-dir <path>` after the draft deck is ready.
 
 ## Rules
 - Default to English output unless the user explicitly wants another language.
-- Preserve `slides-grab`'s native `720pt x 405pt` frame. Do not force the local A4 template literally.
-- Treat the SNUPI template as style guidance: large titles, large body text, one major figure/equation/table per slide, minimal dense prose.
+- Preserve `slides-grab`'s native `720pt x 405pt` frame.
+- Treat the bundled HTML template as the canonical layout source, not merely loose style guidance.
+- Use the legacy PPTX or PDF only as secondary reference when the HTML template does not answer a question.
 - Prefer downloaded local assets in `./assets/`. Do not leave remote image URLs in saved slide HTML.
 - Keep figures, tables, and equations academically faithful. If confidence is low, say so in the caption instead of inventing details.
 - Use a meeting-log slide only when it genuinely helps the presentation.
@@ -85,3 +98,4 @@ Keep later revisions in the same workspace instead of scattering notes elsewhere
 - `references/paper-intake-and-figure-workflow.md`
 - `references/snupi-style-guide.md`
 - `references/deck-recipes.md`
+- `references/template-html-workflow.md`

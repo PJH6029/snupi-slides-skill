@@ -1,6 +1,6 @@
 # SNUPI style guide (EN)
 
-Apply this on top of the installed `slides-grab` design workflow.
+Apply this on top of the installed `slides-grab` design workflow, using the bundled HTML template in `assets/template-html/` as the canonical visual source.
 
 ## Frame and typography
 - Keep the native `slides-grab` frame: `720pt x 405pt` (16:9).
@@ -8,6 +8,12 @@ Apply this on top of the installed `slides-grab` design workflow.
 - Title text should usually be at least `35pt`.
 - Main body text should usually be at least `25pt`.
 - If the slide becomes unreadable at those sizes, reduce content instead of shrinking text aggressively.
+
+## Template fidelity rules
+- Start from the bundled HTML template before inventing any new layout.
+- Preserve the blue top and bottom bars, footer logo/date/page rhythm, and serif-forward title treatment unless the user explicitly asks for a deviation.
+- Reuse the template's slide archetypes for title, list, figure, equation, and meeting-log slides.
+- Treat the PPTX and PDF in the repo as legacy visual reference only.
 
 ## SNUPI presentation rules
 - One dominant figure, table, or equation per slide whenever possible.

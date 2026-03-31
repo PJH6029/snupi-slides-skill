@@ -1,6 +1,6 @@
 ---
 name: snupi-presentation-slides-ko
-description: 한국어 SNUPI Lab 발표 덱을 위한 research-aware slides-grab 래퍼입니다. Markdown 브리프, 논문 URL 또는 PDF, 인터뷰 중 하나로 입력을 받아 outline 승인, HTML 슬라이드 생성, 검증, viewer 빌드, editor 실행까지 진행할 때 사용합니다.
+description: 한국어 SNUPI Lab 발표 덱을 위한 research-aware slides-grab 래퍼입니다. Markdown 브리프, 논문 URL 또는 PDF, 인터뷰 중 하나로 입력을 받아 outline 승인, HTML 슬라이드 생성, 검증, viewer 빌드, editor 실행까지 진행하며, 번들된 SNUPI HTML 템플릿을 우선적으로 따를 때 사용합니다.
 metadata:
   short-description: 한국어 SNUPI Lab 연구 발표 슬라이드 워크플로우
 ---
@@ -29,6 +29,16 @@ outline 승인을 생략하지 마세요. HTML만 만들고 끝내지 마세요.
 2. CLI가 없으면 `references/slides-grab-setup.md`를 따릅니다.
 3. Codex용 `slides-grab` 스킬이 없으면 설치 후 Codex 재시작을 안내합니다.
 4. 설치가 끝나면 반드시 `$slides-grab` 스킬을 명시적으로 호출하고, 계획/디자인/검증/viewer/editor 흐름의 기본 백엔드로 사용합니다.
+
+## 템플릿 source of truth
+이 스킬의 1차 시각적 기준은 `assets/template-html/` 아래에 번들된 HTML 템플릿입니다.
+
+슬라이드를 만들기 전에:
+1. `assets/template-html/index.html`을 읽습니다.
+2. `assets/template-html/styles.css`를 읽습니다.
+3. `references/template-html-workflow.md`를 읽고 template deck을 `slides-grab`용 slide file로 어떻게 옮길지 정합니다.
+
+레거시 PPTX/PDF는 HTML 템플릿이 모호할 때만 보조 참고로 사용하세요.
 
 ## 입력 우선순위
 아래 순서대로 가장 강한 입력원을 사용합니다.
@@ -61,19 +71,22 @@ outline 승인을 생략하지 마세요. HTML만 만들고 끝내지 마세요.
 7. 승인 후 설치된 `slides-grab` 워크플로우를 사용해 `slide-XX.html`을 생성합니다.
 8. 디자인할 때 `references/snupi-style-guide.md`를 적용합니다.
    - `slides-grab`의 기본 16:9 프레임 유지
+   - 번들된 HTML 템플릿의 footer, bar, title treatment, layout grammar를 재현
    - 슬라이드마다 하나의 큰 시각적 중심 사용
    - 텍스트는 발표용으로 짧게 유지
-9. 논문 기반 덱에서는 가능한 경우 실제 figure/table을 `./assets/`에 저장해 사용합니다. 추출 결과가 약하면 `data-image-placeholder`와 source-aware caption을 사용합니다.
-10. `slides-grab validate --slides-dir <path>`를 실행합니다.
-11. 검증이 통과할 때까지 HTML/CSS를 수정합니다.
-12. `slides-grab build-viewer --slides-dir <path>`를 실행합니다.
-13. viewer 경로를 사용자에게 알려줍니다.
-14. draft deck이 준비되면 `slides-grab edit --slides-dir <path>`를 실행합니다.
+9. 생성하는 각 슬라이드는 `assets/template-html/index.html`의 가장 가까운 master pattern을 기반으로 하세요. 사용자가 원하지 않는 한 새로운 시각 언어를 만들어내지 마세요.
+10. 논문 기반 덱에서는 가능한 경우 실제 figure/table을 `./assets/`에 저장해 사용합니다. 추출 결과가 약하면 `data-image-placeholder`와 source-aware caption을 사용합니다.
+11. `slides-grab validate --slides-dir <path>`를 실행합니다.
+12. 검증이 통과할 때까지 HTML/CSS를 수정합니다.
+13. `slides-grab build-viewer --slides-dir <path>`를 실행합니다.
+14. viewer 경로를 사용자에게 알려줍니다.
+15. draft deck이 준비되면 `slides-grab edit --slides-dir <path>`를 실행합니다.
 
 ## 규칙
 - 기본 출력 언어는 한국어입니다. 사용자가 명시적으로 원하면 다른 언어를 사용할 수 있습니다.
-- `slides-grab`의 기본 `720pt x 405pt` 프레임을 유지하세요. 로컬 A4 템플릿을 그대로 강제하지 마세요.
-- SNUPI 템플릿은 스타일 가이드로 해석하세요: 큰 제목, 큰 본문, 슬라이드당 하나의 큰 figure/equation/table, 최소한의 조밀한 문장.
+- `slides-grab`의 기본 `720pt x 405pt` 프레임을 유지하세요.
+- 번들된 HTML 템플릿을 느슨한 스타일 가이드가 아니라 canonical layout source로 취급하세요.
+- 레거시 PPTX/PDF는 HTML 템플릿이 답을 주지 못할 때만 보조 참고로 사용하세요.
 - 최종 HTML에는 원격 이미지 URL을 남기지 말고 `./assets/`의 로컬 자산을 우선하세요.
 - figure/table/equation의 내용은 원문에 충실해야 합니다. 확신이 낮으면 캡션에서 불확실성을 밝히고 꾸며내지 마세요.
 - meeting-log 슬라이드는 실제로 도움이 될 때만 넣으세요.
@@ -85,3 +98,4 @@ outline 승인을 생략하지 마세요. HTML만 만들고 끝내지 마세요.
 - `references/paper-intake-and-figure-workflow.md`
 - `references/snupi-style-guide.md`
 - `references/deck-recipes.md`
+- `references/template-html-workflow.md`
