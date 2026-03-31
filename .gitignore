@@ -1,0 +1,7 @@
+.omx/
+.DS_Store
+.agents/
+.openchrome/
+node_modules/
+decks/
+skills-lock.json
